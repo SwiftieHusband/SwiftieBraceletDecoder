@@ -1,0 +1,66 @@
+<div class="content">
+  <div class="search">
+    <div class="title">Swiftie Bracelet Decoder</div>
+    <mat-form-field>
+      <mat-label>Acronym</mat-label>
+      <input [(ngModel)]="userInput" matInput placeholder="Ex. TMTYSM" />
+    </mat-form-field>
+    <div style="padding-top: 8px">
+      <button mat-raised-button color="primary" (click)="search(userInput)">
+        Search
+      </button>
+      <button
+        *ngIf="userInput.length > 0"
+        mat-raised-button
+        color="primary"
+        (click)="clear()"
+      >
+        Clear
+      </button>
+    </div>
+    <div *ngIf="showError">
+      {{ errorMessage }}
+    </div>
+    <div *ngIf="showResults" class="results">
+      <!-- <div *ngIf="albumResults.length > 0">
+        <div *ngFor="let alb of albumResults">
+          <div class="result-item">
+            Title: {{ alb.album }} <br />
+            Year: {{ alb.year }} <br />
+            Number of Songs: {{ alb.songs.length }}
+          </div>
+        </div>
+      </div> -->
+      <div *ngIf="songResults.length > 0">
+        <div *ngFor="let song of songResults">
+          <div class="result-item">
+            <b>{{ song.title }}</b
+            ><br />
+            <i>"{{ song.lyrics }}"</i><br />
+            -- {{ song.album }} --
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">&copy; Copyright {{ currentYear }} - Shoaf-Laughlin</div>
+</div>
+
+<!-- <mat-grid-list cols="2" rowHeight="600" gutterSize="16px">
+    <mat-grid-tile *ngFor="let item of results">
+      <mat-card class="album-card">
+        <mat-card-header>
+          <mat-card-title>{{ item.album }}</mat-card-title>
+          <mat-card-subtitle>{{ item.year }}</mat-card-subtitle>
+        </mat-card-header>
+        <img
+          mat-card-image
+          src="{{ '../assets/album_covers/' + item.image }}"
+          alt="{{ item.album }}"
+        />
+        <mat-card-actions class="actions">
+          <button mat-button>View</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list> -->
